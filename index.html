@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Rock Paper Scissors</title>
+    </head>
+
+    <body>
+<h2>Rock Paper Scissors</h2>
+
+
+
+
+
+<script>
+
+// ARRAY of possible choices for computerPlay function
+const gameArray = ["Rock", "Paper", "Scissors"]; 
+
+
+// outputs RANDOM choice for computerSelection
+function computerPlay() {
+    return gameArray[Math.floor(Math.random()*gameArray.length)]
+}
+
+
+// const VAR'S referenced throughout the code.
+let playerSelection;
+let computerSelection;
+let playerScore;
+let computerScore;
+
+// calls game FUNC intitializing game
+game();
+
+
+/* FUNC creates r, p, s, game, 5 rounds and RETURNS to user,
+ the result of the game */
+function game() {
+    computerScore = 0;
+    playerScore = 0;
+    for (let i = 0; i < 5; i++) {
+        onUserInput();
+    }
+    console.log(declareWinner());
+    
+    
+    // FUNC determines the winner by comparing scores of players, ALERTS and RETURNS the results
+    function declareWinner() {
+        if (playerScore === computerScore) {
+            alert(playerScore + "-" + computerScore + "\nTie Game!");
+            return playerScore + "-" + computerScore + "\nTie Game!";
+        } else if (playerScore > computerScore) {
+            alert(playerScore + "-" + computerScore + "\nYou Win!");
+            return playerScore + "-" + computerScore + "\nYou Win!";
+        } else {
+            alert(playerScore + "-" + computerScore + "\nYou Lose! Better luck next time.");
+            return playerScore + "-" + computerScore + "\nYou Lose! Better luck next time.";
+        }
+    }
+}
+
+/* FUNC determines what the user INPUT is, makes input 'case insensitive', checks for 
+a valid INPUT, calls and passes selection to playRound with player PARAMETERS */
+function onUserInput() {
+    playerSelection = prompt("Rock, Paper or Scissors", "");
+        if ((playerSelection.toLowerCase() == "rock") // toLowerCase used 1st time
+            || (playerSelection.toLowerCase() == "paper")
+            || (playerSelection.toLowerCase() == "scissors")) {
+            
+            console.log(playRound(playerSelection, computerSelection));
+        } else {
+            alert("That's an invalid choice!");
+            onUserInput(); // recursive call
+        }
+}
+
+
+/* FUNC checks player selections aginst one another to determine winner, ALERTS and RETURNS 
+a message declaring result of the round to the user*/ 
+function playRound(playerSelection, computerSelection) {
+    computerSelection = computerPlay().toLowerCase();
+    playerSelection = playerSelection.toLowerCase();
+
+    if (computerSelection == playerSelection) {
+        alert("\nTie Game!");
+        return "\nTie Game!\nComputer Score: " + computerScore + "\nYour Score: " + playerScore;
+    } else if ((computerSelection == "rock" && playerSelection == "scissors") 
+        || (computerSelection == "scissors" && playerSelection == "paper")
+        || (computerSelection == "paper" && playerSelection == "rock")) {
+        
+        alert("You Lose!" + computerSelection + " beats " + playerSelection);
+        return "Computer Score: " + ++computerScore + "\nYour Score: " + playerScore; 
+    } else {
+        alert("You Win! " + playerSelection + " beats " + computerSelection);
+        return "Your Score: " + ++playerScore + "\nComputer Score: " + computerScore;
+    }
+}
+
+</script>
+
+    </body>
+
+</html>

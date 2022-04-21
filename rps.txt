@@ -1,0 +1,87 @@
+Rock Paper Scissors Game
+
+Game: 2 Players (Computer is the second player in this version), play against one another.
+
+Rounds: Best of 5 rounds, computer vs user.
+
+
+
+
+CONSTANT VARIABLE gameArray = ["rock", "paper", "scissors"]
+
+FUNC computerPlay:
+    RETURN random selection from gameArray ["rock", "paper", "scissors"]
+
+VARIABLES
+    LET playerSelection;
+    LET computerSelection;
+    LET playerScore;
+    LET computerScore;
+
+CALL FUNC game:
+
+FUNC game:
+
+    playerScore = 0
+    ComputerScore = 0
+    
+    FOR LOOP:
+    SET counter = 1
+    BREAK counter = 5
+    INCREMENT counter by 1
+
+        CALL FUNC onUserInput:
+
+    LOG FUNC declareWinner:
+
+    FUNC declareWinner:
+
+        IF playerScore === computerScore
+            ALERT playerScore + computerScore +  "Tie Game!".
+            RETURN playerScore + computerScore +  "Tie Game!".
+        
+        ELSE IF playerScore > computerScore
+            ALERT playerScore + computerScore + "You Win!"
+            RETURN playerScore + computerScore + "You Win!"
+
+        ELSE computerScore > playerScore
+            ALERT playerScore + computerScore + "You lost. Better luck next time!"
+            RETURN playerScore + computerScore + "You lost. Better luck next time!"
+
+
+FUNC onUserInput:
+
+VAR playerSelection = PROMPT player to choose one "rock", "paper" or "scissors" 
+    IF playerSelection (converted to lower case)        // converting to lower case 2 times in this code, why?
+        = "rock", 
+        OR = "paper",     
+        OR = "scissors"
+        
+        LOG FUNC playRound with parameters playerSelection and computerSelection
+    
+    ELSE 
+        ALERT "That's an invalid choice"
+        CALL FUNC onUserInput               // recursive call, is this good?, while loop instead?
+
+
+FUNC playRound, parameters = playerSelection and computerSelection
+
+    computerSelection = result of FUNC computerPlay 
+    playerSelection = result of FUNC onUserInput
+
+    IF computerSelection === playerSelection
+        ALERT "Tie Game!"
+        RETURN "Tie Game!" + computerScore + playerScore
+
+    ELSE IF computerSelection = "rock" and playerSelection = "scissors", 
+        or computerSelection = "scissors" and playerSelection = "paper", 
+        or computerSelection = "paper" and playerSelection "rock"
+
+        ALERT "You lose!" + computerSelection + "beats" + playerSelection
+        RETURN "ComputerScore: " + Increment computerScore by 1 + "Your Score: " + playerScore
+
+    ELSE 
+        ALERT "You Win! " + playerSelection + " beats " + computerSelection
+        RETURN "Your Score: " + Increment playerScore by 1 + "Computer Score: " + computerScore
+
+END
