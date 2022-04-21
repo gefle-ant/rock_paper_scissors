@@ -14,21 +14,19 @@
 
 <script>
 
-// ARRAY of possible choices for computerPlay function
-const gameArray = ["Rock", "Paper", "Scissors"]; 
-
-
 // outputs RANDOM choice for computerSelection
 function computerPlay() {
-    return gameArray[Math.floor(Math.random()*gameArray.length)]
+    // ARRAY of possible choices for computerPlay function
+    const gameArray = ["Rock", "Paper", "Scissors"]; 
+    return gameArray[Math.floor(Math.random() * gameArray.length)];
 }
 
 
 // const VAR'S referenced throughout the code.
 let playerSelection;
 let computerSelection;
-let playerScore;
-let computerScore;
+let playerScore = 0;
+let computerScore = 0;
 
 // calls game FUNC intitializing game
 game();
@@ -37,8 +35,6 @@ game();
 /* FUNC creates r, p, s, game, 5 rounds and RETURNS to user,
  the result of the game */
 function game() {
-    computerScore = 0;
-    playerScore = 0;
     for (let i = 0; i < 5; i++) {
         onUserInput();
     }
@@ -89,7 +85,7 @@ function playRound(playerSelection, computerSelection) {
         || (computerSelection == "scissors" && playerSelection == "paper")
         || (computerSelection == "paper" && playerSelection == "rock")) {
         
-        alert("You Lose!" + computerSelection + " beats " + playerSelection);
+        alert("You Lose! " + computerSelection + " beats " + playerSelection);
         return "Computer Score: " + ++computerScore + "\nYour Score: " + playerScore; 
     } else {
         alert("You Win! " + playerSelection + " beats " + computerSelection);
