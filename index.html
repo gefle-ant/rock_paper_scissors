@@ -9,9 +9,6 @@
 <h2>Rock Paper Scissors</h2>
 
 
-
-
-
 <script>
 
 // outputs RANDOM choice for computerSelection
@@ -59,12 +56,11 @@ function game() {
 /* FUNC determines what the user INPUT is, makes input 'case insensitive', checks for 
 a valid INPUT, calls and passes selection to playRound with player PARAMETERS */
 function onUserInput() {
-    playerSelection = prompt("Rock, Paper or Scissors", "");
+    playerSelection = prompt("Rock, Paper or Scissors", "").toLowerCase();
         if ((playerSelection.toLowerCase() == "rock") // toLowerCase used 1st time
             || (playerSelection.toLowerCase() == "paper")
             || (playerSelection.toLowerCase() == "scissors")) {
-            
-            console.log(playRound(playerSelection, computerSelection));
+                console.log(playRound(playerSelection, computerSelection));
         } else {
             alert("That's an invalid choice!");
             onUserInput(); // recursive call
@@ -75,8 +71,8 @@ function onUserInput() {
 /* FUNC checks player selections aginst one another to determine winner, ALERTS and RETURNS 
 a message declaring result of the round to the user*/ 
 function playRound(playerSelection, computerSelection) {
-    computerSelection = computerPlay().toLowerCase();
-    playerSelection = playerSelection.toLowerCase();
+        playerSelection;
+        computerSelection = computerPlay().toLowerCase();
 
     if (computerSelection == playerSelection) {
         alert("\nTie Game!");
