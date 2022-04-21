@@ -1,6 +1,6 @@
 # rock_paper_scissors
 
-This version is a near copy of @loookingcoolonavespa 's og.index file which contains the javascript inline. 
+This version is a based on @loookingcoolonavespa 's og.index file which contains the javascript inline. 
 
 A pseudocode file was added, which inludes goals and plain language version of the code.
 
