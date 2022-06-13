@@ -8,6 +8,12 @@
     <body>
 <h2>Rock Paper Scissors</h2>
 
+<div class="ui" id="ui">
+    <button class="button" id="rock">Rock</button>
+    <button class="button" id="paper">Paper</button>
+    <button class="button" id="scissors">Scissors</button>
+</div>
+
 
 <script>
 
@@ -31,7 +37,7 @@ game();
 
 /* FUNC creates r, p, s, game, 5 rounds and RETURNS to user,
  the result of the game */
-function game() {
+/* function game() {
     for (let i = 0; i < 5; i++) {
         onUserInput();
     }
@@ -51,7 +57,7 @@ function game() {
             return playerScore + "-" + computerScore + "\nYou Lose! Better luck next time.";
         }
     }
-}
+} */
 
 /* FUNC determines what the user INPUT is, makes input 'case insensitive', checks for 
 a valid INPUT, calls and passes selection to playRound with player PARAMETERS */
